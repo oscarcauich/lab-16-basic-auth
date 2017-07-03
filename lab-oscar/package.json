@@ -7,7 +7,7 @@
     "start": "node server.js",
     "start-db": "mkdir -p ./db && mongod --dbpath ./db",
     "stop-db": "killall mongod",
-    "test": "echo \"mocha"
+    "test": "mocha"
   },
   "keywords": [],
   "author": "",
