@@ -17,16 +17,15 @@ const app = express();
 app.use(morgan('dev'));
 app.use(cors());
 
-
-
 // //    * load routes
 // app.use(require('../route/auth-router.js'))
 //
-// // add 404 route
-// app.all('/api/*', (req, res, next) => res.sendStatus(404))
-//
-// //    * load error middleware
-// app.use(require('./error-middleware.js'))
+
+//404 route for invalid path request
+app.all('/api/*', (req, res, next) => res.sendStatus(404));
+
+//error handler
+app.use(require('./error-handler.js'));
 
 //start and stop database
 
