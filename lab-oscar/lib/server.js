@@ -17,9 +17,9 @@ const app = express();
 app.use(morgan('dev'));
 app.use(cors());
 
-// //    * load routes
-// app.use(require('../route/auth-router.js'))
-//
+//load routes
+app.use(require('../route/auth-router.js'));
+
 
 //404 route for invalid path request
 app.all('/api/*', (req, res, next) => res.sendStatus(404));

@@ -11,5 +11,11 @@ module.exports = (err, req, res, next) => {
   if(err.message.toLowerCase().includes('objectid failed'))
     return res.sendStatus(404);
 
+  if(err.message.toLowerCase().includes('arguments required'))
+    return res.sendStatus(400);
+
+  if(err.message.toLowerCase().includes('unauthorized user'))
+    return res.sendStatus(401);
+
   res.sendStatus(500);
 };
