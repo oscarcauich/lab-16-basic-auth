@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "start-db": "mkdir -p ./db && mongod --dbpath ./db",
+    "stop-db": "killall mongod",
+    "test": "mocha"
   },
   "keywords": [],
   "author": "",
@@ -21,6 +24,7 @@
   },
   "devDependencies": {
     "expect": "^1.20.2",
+    "faker": "^4.1.0",
     "mocha": "^3.4.2",
     "superagent": "^3.5.2"
   }
