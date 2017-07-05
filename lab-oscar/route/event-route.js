@@ -2,7 +2,7 @@
 
 const {Router} = require('express');
 
-const s3Upload = require('..lib/s3-upload-handler.js');
+const s3Upload = require('../lib/s3-upload-handler.js');
 const bearerAuth = require('../lib/bearer-auth-handler.js');
 const Event = require('../model/event.js');
 
