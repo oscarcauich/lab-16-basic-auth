@@ -27,13 +27,43 @@ describe('testing event router', () => {
         .field('title', 'Garage Sale')
         .field('description', 'Come to our g sale')
         .field('location', '1234 some ST')
-        .field('eventImage', `${__dirname}/assets/eventImage.jpg`);
+        .attach('eventImage', `${__dirname}/assets/eventImage.jpg`);
       })
       .then(res => {
         expect(res.status).toEqual(200);
         expect(res.body.title).toEqual('Garage Sale');
         expect(res.body.userID).toEqual(tempUserData.user._id.toString());
         expect(res.body.eventImageURI).toExist();
+      });
+    });
+    it('should respond with error code 400', () => {
+      let tempUserData;
+      return mockUser.createOne()
+      .then(userData => {
+        tempUserData = userData;
+        return superagent.post(`${API_URL}/api/events`)
+        .set('authorization', `Bearer ${tempUserData.token}`)
+        .field('tile', 'No Name');
+      })
+      .catch(res => {
+        expect(res.status).toEqual(400);
+      });
+    });
+
+    it('should respond with error code 401', () => {
+      let tempUserData;
+      return mockUser.createOne()
+      .then(userData => {
+        tempUserData = userData;
+        return superagent.post(`${API_URL}/api/events`)
+        // .set('authorization', `Bearer 20935809438`)
+        .field('title', 'Garage Sale')
+        .field('description', 'Come to our g sale')
+        .field('location', '1234 some ST')
+        .attach('eventImage', `${__dirname}/assets/eventImage.jpg`);
+      })
+      .catch(res => {
+        expect(res.status).toEqual(401);
       });
     });
   });

@@ -13,7 +13,7 @@ eventRouter.post('/api/events', bearerAuth, s3Upload('eventImage'), (req, res, n
     title: req.body.title,
     description: req.body.description,
     location: req.body.location,
-    eventImageURI: req.s3Data.location,
+    eventImageURI: req.s3Data.Location,
     userID: req.user._id.toString(),
   })
   .save()
