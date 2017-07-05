@@ -19,6 +19,7 @@ app.use(cors());
 
 //load routes
 app.use(require('../route/auth-router.js'));
+app.use(require('../route/event-route.js'));
 
 
 //404 route for invalid path request
