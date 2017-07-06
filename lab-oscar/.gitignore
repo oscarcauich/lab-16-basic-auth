@@ -70,3 +70,6 @@ tags
 .env
 .test.env
 db
+coverage
+.nyc_output
+.DS_Store
