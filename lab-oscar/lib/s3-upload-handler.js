@@ -25,7 +25,8 @@ module.exports = (fieldName) => (req, res, next) => {
     .promise()
     .then(s3Data => {
       req.s3Data = s3Data;
-      return fs.remove(req.file.filename);
+      console.log(req.file.filename);
+      return fs.remove(`${__dirname}/../temp-assets/${req.file.filename}`);
     })
     .then(() => next())
     .catch(next);
